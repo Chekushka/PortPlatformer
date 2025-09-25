@@ -28,7 +28,7 @@ public class PlayerInputHandler : MonoBehaviour
     }
     
     // This is the new method to call from PlayerController after a jump
-    public void ResetJump()
+    public void ResetJumpInput()
     {
         JumpPressed = false;
     }

@@ -241,13 +241,13 @@ MonoBehaviour:
   active: 1
   redOutRedIn:
     m_OverrideState: 1
-    m_Value: 144
+    m_Value: 130.4
   redOutGreenIn:
     m_OverrideState: 1
-    m_Value: 20
+    m_Value: -12.2
   redOutBlueIn:
     m_OverrideState: 0
-    m_Value: -32
+    m_Value: 7.4
   greenOutRedIn:
     m_OverrideState: 0
     m_Value: -4
