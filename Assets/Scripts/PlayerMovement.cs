@@ -1,68 +1,75 @@
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour , IPausable
 {
     [Header("Movement Settings")]
     // Public variables to adjust in the Inspector
-    public float moveSpeed = 6f;
-    public float sprintSpeed = 10f;
-    public float acceleration = 15f; 
-    public float deceleration = 20f;
-    [Range(0.1f, 10)] public float rotationMultiplier = 10f;
-    public float gravity = -9.81f;
+    [SerializeField] private float moveSpeed = 6f;
+    [SerializeField] private float sprintSpeed = 10f;
+    [SerializeField] private float acceleration = 15f; 
+    [SerializeField] private float deceleration = 20f;
+    [Range(0.1f, 10)] [SerializeField] private float rotationMultiplier = 10f;
+    [SerializeField] private float gravity = -9.81f;
     
     [Header("Jump Settings")]
-    public int maxJumps = 2;
-    public float jumpHeight = 2f;
-    public float jumpFlipBoost = 5f;
-    [Range(-2,0)] public float characterFallMultiplier = -4f;
+    [SerializeField] private int maxJumps = 2;
+    [SerializeField] private float jumpHeight = 2f;
+    [SerializeField] private float jumpFlipBoost = 5f;
+    [Range(-2,0)] [SerializeField] private float characterFallMultiplier = -4f;
     
     [Header("Ground Check")]
-    public Transform groundCheck; // An empty GameObject placed at the character's feet
-    public float groundCheckRadius = 0.2f;
-    public LayerMask groundLayer; // Make sure your ground object has this layer
+    [SerializeField] private Transform groundCheck; // An empty GameObject placed at the character's feet
+    [SerializeField] private float groundCheckRadius = 0.2f;
+    [SerializeField] private LayerMask groundLayer; // Make sure your ground object has this layer
     
-    public Camera mainCamera;
+    [Header("Camera")]
+    [SerializeField] private Camera mainCamera;
 
     // References to other components
-    private CharacterController controller;
-    private PlayerInputHandler inputHandler;
-    private Animator animator;
+    private CharacterController m_Controller;
+    private PlayerInputHandler m_InputHandler;
+    private Animator m_Animator;
 
     // Internal state variables
-    private float currentSpeed;
-    private Vector3 velocity;
-    private int jumpCount = 0;
+    private float m_CurrentSpeed;
+    private Vector3 m_Velocity;
+    private int m_JumpCount = 0;
+    private bool m_IsPaused = false;
     
-    void Start()
+    private void Start()
     {
-        controller = GetComponent<CharacterController>();
-        // Get the PlayerInputHandler component on this same GameObject
-        inputHandler = GetComponent<PlayerInputHandler>();
-        animator = GetComponent<Animator>();
+        m_Controller = GetComponent<CharacterController>();
+        m_InputHandler = GetComponent<PlayerInputHandler>();
+        m_Animator = GetComponent<Animator>();
     }
     
-    void Update()
+    private void Update()
     {
+        if (m_IsPaused)
+        {
+            return; // Stop executing the rest of the Update method
+        }
+        
         // Handle gravity
         bool isGrounded = IsCharacterGrounded();
-        if (isGrounded && velocity.y < 0)
+        if (isGrounded && m_Velocity.y < 0)
         {
-            jumpCount = 0; // Reset jump count when grounded
-            velocity.y = -2f; 
+            m_JumpCount = 0; // Reset jump count when grounded
+            m_Velocity.y = -2f; 
         }
         
         // Read input from the handler
-        Vector2 inputVector = inputHandler.MoveInput;
-        bool isSprinting = inputHandler.IsSprinting;
+        Vector2 inputVector = m_InputHandler.MoveInput;
+        bool isSprinting = m_InputHandler.IsSprinting;
         
         // Calculate the movement direction relative to the camera
         Vector3 cameraForward = mainCamera.transform.forward;
-        cameraForward.y = 0f;
-        cameraForward.Normalize(); 
-        
         Vector3 cameraRight = mainCamera.transform.right;
+        cameraForward.y = 0f;
+        cameraRight.y = 0f;
+        cameraForward.Normalize();
+        cameraRight.Normalize();
         
         Vector3 moveDirection = cameraForward * inputVector.y + cameraRight * inputVector.x;
         
@@ -74,52 +81,66 @@ public class PlayerController : MonoBehaviour
         }
 
         // Smoothly move towards the target speed
-        float speedSmooth = (targetSpeed > currentSpeed) ? acceleration : deceleration;
-        currentSpeed = Mathf.MoveTowards(currentSpeed, targetSpeed, speedSmooth * Time.deltaTime);
+        float speedSmooth = (targetSpeed > m_CurrentSpeed) ? acceleration : deceleration;
+        m_CurrentSpeed = Mathf.MoveTowards(m_CurrentSpeed, targetSpeed, speedSmooth * Time.deltaTime);
 
         // Handle jump
-        if (inputHandler.JumpPressed)
+        if (m_InputHandler.JumpPressed)
         {
             // First jump or subsequent jumps
-            if (isGrounded || jumpCount < maxJumps)
+            if (isGrounded || m_JumpCount < maxJumps)
             {
-                velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+                m_Velocity.y = Mathf.Sqrt(jumpHeight * characterFallMultiplier * gravity);
 
-                if (!isGrounded && inputHandler.IsSprinting)
+                if (!isGrounded && m_InputHandler.IsSprinting)
                 {
                     Vector3 forwardBoost = transform.forward * jumpFlipBoost;
-                    controller.Move(forwardBoost * Time.deltaTime);
-                    animator.SetTrigger("Flip");
+                    m_Controller.Move(forwardBoost * Time.deltaTime);
+                    m_Animator.SetTrigger("Flip");
                 }
                 else
                 {
-                    animator.SetTrigger("Jump");
+                    m_Animator.SetTrigger("Jump");
                 }
                 
-                jumpCount++;
-                inputHandler.ResetJumpInput(); 
+                m_JumpCount++;
+                m_InputHandler.ResetJumpInput(); 
             }
         }
         
         // Handle rotation and movement
         if (moveDirection.magnitude > 0.1f)
         {
-            Quaternion newRotation = Quaternion.LookRotation(moveDirection);
+            Quaternion newRotation = Quaternion.LookRotation(moveDirection.normalized, Vector3.up);
             transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, Time.deltaTime * rotationMultiplier);
 
-            controller.Move(transform.forward * (currentSpeed * Time.deltaTime));
+            m_Controller.Move(transform.forward * (m_CurrentSpeed * Time.deltaTime));
         }
     
         // Animate the character
-        animator.SetFloat("Speed", currentSpeed);
-        animator.SetBool("IsGrounded", isGrounded);
-        animator.SetFloat("YVelocity", velocity.y);
-        animator.SetFloat("XInput", inputHandler.MoveInput.x);
+        m_Animator.SetFloat("Speed", m_CurrentSpeed);
+        m_Animator.SetBool("IsGrounded", isGrounded);
+        m_Animator.SetFloat("YVelocity", m_Velocity.y);
+        m_Animator.SetFloat("XInput", m_InputHandler.MoveInput.x);
         
         // Apply gravity and final move
-        velocity.y += gravity * Time.deltaTime;
-        controller.Move(velocity * Time.deltaTime);
+        m_Velocity.y += gravity * Time.deltaTime;
+        m_Controller.Move(m_Velocity * Time.deltaTime);
     }
+    
+    private void OnEnable()
+    {
+        PauseManager.I.Register(this);
+    }
+
+    // Unregister when this object is disabled
+    private void OnDisable()
+    {
+        PauseManager.I.Unregister(this);
+    }
+    
+    public void Pause() => m_IsPaused = true;
+    public void Resume() => m_IsPaused = false;
     
     private bool IsCharacterGrounded()
     {
