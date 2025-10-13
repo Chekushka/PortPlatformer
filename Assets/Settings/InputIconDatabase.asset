@@ -1,0 +1,291 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62db21d3e4cc4c6690eae0bedbc0ffea, type: 3}
+  m_Name: InputIconDatabase
+  m_EditorClassIdentifier: Assembly-CSharp::Input.InputIconDatabase
+  deviceIconSets:
+  - deviceName: Keyboard
+    icons:
+    - bindingId: escape
+      icon: {fileID: 21300000, guid: 7958c678751d76d4d94f6b18d3b82ef3, type: 3}
+    - bindingId: 1
+      icon: {fileID: 21300000, guid: 067960d828fbf124ebc881509b8e2f7a, type: 3}
+    - bindingId: 2
+      icon: {fileID: 21300000, guid: d4a2a247bfae80142989657701bd8ae1, type: 3}
+    - bindingId: 3
+      icon: {fileID: 21300000, guid: 2cd8fd9239eb7d34fb86f3edc5546887, type: 3}
+    - bindingId: 4
+      icon: {fileID: 21300000, guid: 9e95b08c418e94345971379a87147e2d, type: 3}
+    - bindingId: 5
+      icon: {fileID: 21300000, guid: e1ea9f8ce95735a4a83cc0023cf87d98, type: 3}
+    - bindingId: 6
+      icon: {fileID: 21300000, guid: 794c34f5139adcd4d8ace1c68d0f097f, type: 3}
+    - bindingId: 7
+      icon: {fileID: 21300000, guid: 7719ace689437454c986e1fb807f388c, type: 3}
+    - bindingId: 8
+      icon: {fileID: 21300000, guid: d48b832ae5afdba42bfbedc466cb77e0, type: 3}
+    - bindingId: 9
+      icon: {fileID: 21300000, guid: 4ee856fdda976724abaf9262d631b259, type: 3}
+    - bindingId: 0
+      icon: {fileID: 21300000, guid: 60cc5a9191802fd4f92a5619b432a428, type: 3}
+    - bindingId: '-'
+      icon: {fileID: 21300000, guid: 1b6ce825d423a1a43b8406fe625d64da, type: 3}
+    - bindingId: +
+      icon: {fileID: 21300000, guid: eb497c13607b73f4f8b149d2a51dc03f, type: 3}
+    - bindingId: f1
+      icon: {fileID: 21300000, guid: b3888e18f011b0b43851ba40426dc03b, type: 3}
+    - bindingId: f2
+      icon: {fileID: 21300000, guid: a4d66cf850661f44081b523c02a1be35, type: 3}
+    - bindingId: f3
+      icon: {fileID: 21300000, guid: 8a5ab806280b100498f2495bad04b7ae, type: 3}
+    - bindingId: f4
+      icon: {fileID: 21300000, guid: fd1e108678fe5104fb61408c7d98403c, type: 3}
+    - bindingId: f5
+      icon: {fileID: 21300000, guid: 70dbeda3c57892145a3ca52913e63478, type: 3}
+    - bindingId: f6
+      icon: {fileID: 21300000, guid: 5f1c5bd39dfa3b340b81df8053c19eb6, type: 3}
+    - bindingId: f7
+      icon: {fileID: 21300000, guid: 06d19e9140b2b5748b039d78d7572c9d, type: 3}
+    - bindingId: f8
+      icon: {fileID: 21300000, guid: b2450113ccf8e4148bf9786a897c1dde, type: 3}
+    - bindingId: f9
+      icon: {fileID: 21300000, guid: ac6afd44cf4a2964889af8f3fea75d3a, type: 3}
+    - bindingId: f10
+      icon: {fileID: 21300000, guid: 4eadcd9b7eb236640b7b0fb4547d99ca, type: 3}
+    - bindingId: f11
+      icon: {fileID: 21300000, guid: 16143016c06cc244c93ade552915d5a8, type: 3}
+    - bindingId: f12
+      icon: {fileID: 21300000, guid: 2146bc17713cb624bae0310201662d3e, type: 3}
+    - bindingId: '`'
+      icon: {fileID: 21300000, guid: 4aae67734e7224f43aa1dd168f8889ad, type: 3}
+    - bindingId: ~
+      icon: {fileID: 21300000, guid: e15f699757cbcfb4da1951aa6581942e, type: 3}
+    - bindingId: tab
+      icon: {fileID: 21300000, guid: 2fbb0f49e7a58344bb65c3e4c2a59167, type: 3}
+    - bindingId: capslock
+      icon: {fileID: 21300000, guid: 0bd716b3bd7b27c469f538093823feee, type: 3}
+    - bindingId: shift
+      icon: {fileID: 21300000, guid: 3759e88d4be0d1e4194659b57457a416, type: 3}
+    - bindingId: ctrl
+      icon: {fileID: 21300000, guid: 0594a9bb05b2ec240ab9dd17238e3927, type: 3}
+    - bindingId: alt
+      icon: {fileID: 21300000, guid: 9f5b25b9281d87b48a438746e17bbd16, type: 3}
+    - bindingId: space
+      icon: {fileID: 21300000, guid: fe8614926d84c1b44930c15cd29f95a1, type: 3}
+    - bindingId: win
+      icon: {fileID: 21300000, guid: 5a4d8c9765510044f95678cbfe4c20d3, type: 3}
+    - bindingId: backspace
+      icon: {fileID: 21300000, guid: aadf83c88f9c91143bc2d51ecb75c597, type: 3}
+    - bindingId: \
+      icon: {fileID: 21300000, guid: 7bafd3e6a9219f546ba6a4e23f403406, type: 3}
+    - bindingId: enter
+      icon: {fileID: 21300000, guid: 844ec4f79897fbb40bfef52f02216a55, type: 3}
+    - bindingId: home
+      icon: {fileID: 21300000, guid: e9fb0328330c83441b53499882bf1907, type: 3}
+    - bindingId: del
+      icon: {fileID: 21300000, guid: 55851dfd944af794c91b7e68c1775454, type: 3}
+    - bindingId: printScreen
+      icon: {fileID: 21300000, guid: a343743b70c9cd74da5328cdfda7d896, type: 3}
+    - bindingId: pageUp
+      icon: {fileID: 21300000, guid: d6ffe8d5aa063a140b4a18f337ccf243, type: 3}
+    - bindingId: pageDown
+      icon: {fileID: 21300000, guid: 1ee4ad6603fefd4479dfad18d854b719, type: 3}
+    - bindingId: end
+      icon: {fileID: 21300000, guid: cdc61c67dc9a60141b3fa0e952c09e6e, type: 3}
+    - bindingId: leftArrow
+      icon: {fileID: 21300000, guid: 60585a2149823014ab75a807650e970a, type: 3}
+    - bindingId: rightArrow
+      icon: {fileID: 21300000, guid: 4ab32c9504b85c544a5edb00f1a9544f, type: 3}
+    - bindingId: upArrow
+      icon: {fileID: 21300000, guid: e0f2a9e8c32c15c4aab66e8636b5bd85, type: 3}
+    - bindingId: downArrow
+      icon: {fileID: 21300000, guid: e8df350e1d570aa4e976830873fd0583, type: 3}
+    - bindingId: q
+      icon: {fileID: 21300000, guid: 97b15766d324c7b459c5b741d5ee96ec, type: 3}
+    - bindingId: w
+      icon: {fileID: 21300000, guid: bbabb5cde824931439594cdbaccb041d, type: 3}
+    - bindingId: e
+      icon: {fileID: 21300000, guid: d0f63ceedc299fc42a6e5e5b84a7e1d5, type: 3}
+    - bindingId: r
+      icon: {fileID: 21300000, guid: bfeeb2bf9e406ad41a5ed19595233e59, type: 3}
+    - bindingId: t
+      icon: {fileID: 21300000, guid: 608910aff4893ef4ba80266635462caf, type: 3}
+    - bindingId: y
+      icon: {fileID: 21300000, guid: 7f0b635b0e7e1d949b2161c9ff29b56c, type: 3}
+    - bindingId: u
+      icon: {fileID: 21300000, guid: 9da835dc95941fc4883ea616476b2d66, type: 3}
+    - bindingId: i
+      icon: {fileID: 21300000, guid: bfececa6b7bee8a4d8b57e97700c8b02, type: 3}
+    - bindingId: o
+      icon: {fileID: 21300000, guid: 2e3d5bcc782d5b846878b0c87ddfa127, type: 3}
+    - bindingId: p
+      icon: {fileID: 21300000, guid: 74ac9a77388d1b3438f535b1536dc9c1, type: 3}
+    - bindingId: '['
+      icon: {fileID: 21300000, guid: c2ad063793c2acd43821aa506e9bf001, type: 3}
+    - bindingId: ']'
+      icon: {fileID: 21300000, guid: 87e6a21fdd969ab47b3b4fd1ef3428d2, type: 3}
+    - bindingId: a
+      icon: {fileID: 21300000, guid: 22133ed00f53e124884806e453f45930, type: 3}
+    - bindingId: s
+      icon: {fileID: 21300000, guid: 41fca36c140106843b90f68f5e324796, type: 3}
+    - bindingId: d
+      icon: {fileID: 21300000, guid: 2ed585e470883c04a94bcc92dc98b928, type: 3}
+    - bindingId: f
+      icon: {fileID: 21300000, guid: 180f09a5c0f0a084998c32644dc69d3e, type: 3}
+    - bindingId: g
+      icon: {fileID: 21300000, guid: e9dab5b38f145ad49abb7d69dc31a4d2, type: 3}
+    - bindingId: h
+      icon: {fileID: 21300000, guid: 67cd96bfd6def894885e3f8f5943ab25, type: 3}
+    - bindingId: j
+      icon: {fileID: 21300000, guid: 068ec20771c5009499a0f89ab23ca33a, type: 3}
+    - bindingId: k
+      icon: {fileID: 21300000, guid: 5aa434fe8d140364cbd4bbfd3769e1d4, type: 3}
+    - bindingId: l
+      icon: {fileID: 21300000, guid: 5a3e5af915c2b1d408a618aa2f6d157e, type: 3}
+    - bindingId: ;
+      icon: {fileID: 21300000, guid: dff83957ff9a42e4bb416b80b146fe8f, type: 3}
+    - bindingId: ''''
+      icon: {fileID: 21300000, guid: a369cc9e4cb108a45a1133524e02454b, type: 3}
+    - bindingId: z
+      icon: {fileID: 21300000, guid: c7e61a44ad98a904fbdccecab6ddccf0, type: 3}
+    - bindingId: x
+      icon: {fileID: 21300000, guid: d258e4a9ff6058248a854814ff541b97, type: 3}
+    - bindingId: c
+      icon: {fileID: 21300000, guid: 62fe869a164418e4a8301321a3cfc7dc, type: 3}
+    - bindingId: v
+      icon: {fileID: 21300000, guid: 1ac836aa57a70cc49b0cabfcc3749a1e, type: 3}
+    - bindingId: b
+      icon: {fileID: 21300000, guid: e3702f148db53ae4e9c9111336368492, type: 3}
+    - bindingId: n
+      icon: {fileID: 21300000, guid: 96e9530684f25ba41aca90cfe2e5e4f9, type: 3}
+    - bindingId: m
+      icon: {fileID: 21300000, guid: a4dd04490aa826949807369cc08f67c2, type: 3}
+    - bindingId: ','
+      icon: {fileID: 21300000, guid: 387022d4a33757d4196f969e0a06ed8a, type: 3}
+    - bindingId: .
+      icon: {fileID: 21300000, guid: aca5769f90ceee2408e698eb293a25e1, type: 3}
+    - bindingId: /
+      icon: {fileID: 21300000, guid: d6cab45eb4fde8f4588cb92b2b7e2ec1, type: 3}
+  - deviceName: Xbox
+    icons:
+    - bindingId: buttonNorth
+      icon: {fileID: 21300000, guid: 871a75766472f714b87db51029e997d7, type: 3}
+    - bindingId: buttonSouth
+      icon: {fileID: 21300000, guid: 6676503ce31c0c14ba67fa4d60f82dd5, type: 3}
+    - bindingId: buttonEast
+      icon: {fileID: 21300000, guid: d7af91007f76ee94cbcf6efec993358a, type: 3}
+    - bindingId: buttonWest
+      icon: {fileID: 21300000, guid: 35c78185b1a208944a610e4988df1a20, type: 3}
+    - bindingId: rightStick
+      icon: {fileID: 21300000, guid: 14cef4595395b964f9eb9e09d0b5fb16, type: 3}
+    - bindingId: leftStick
+      icon: {fileID: 21300000, guid: ff943849283ce714cb107bb84cb5079a, type: 3}
+    - bindingId: rightShoulder
+      icon: {fileID: 21300000, guid: 1f47794a9472d6c418d771da5ef4fb1b, type: 3}
+    - bindingId: leftShoulder
+      icon: {fileID: 21300000, guid: 9086c6b65d8b78a4480c114a3af93cd0, type: 3}
+    - bindingId: leftTrigger
+      icon: {fileID: 21300000, guid: 68ce49979ff82ef46acd05e068f0fa1a, type: 3}
+    - bindingId: rightTrigger
+      icon: {fileID: 21300000, guid: 0581f827a4c47d844b118245a01cf2bd, type: 3}
+    - bindingId: start
+      icon: {fileID: 21300000, guid: 0ac78a998ede10e4893ea0d38cec8836, type: 3}
+    - bindingId: back
+      icon: {fileID: 21300000, guid: 0ac78a998ede10e4893ea0d38cec8836, type: 3}
+    - bindingId: dpad/up
+      icon: {fileID: 21300000, guid: 5866f67e870002a41a44aacbc1fd6946, type: 3}
+    - bindingId: dpad/down
+      icon: {fileID: 21300000, guid: 3b41007a1b4b3084dbdb019828f0c1ba, type: 3}
+    - bindingId: dpad/right
+      icon: {fileID: 21300000, guid: afe8d7019464e3446b449e49648b7222, type: 3}
+    - bindingId: dpad/left
+      icon: {fileID: 21300000, guid: 1a62329a69e67d445afb660141dbe0cc, type: 3}
+    - bindingId: leftStickPress
+      icon: {fileID: 21300000, guid: 4a02025debee9f7468ba675620502db6, type: 3}
+    - bindingId: rightStickPress
+      icon: {fileID: 21300000, guid: 7fe159fdb20e90f40a2bb8cfbed8ce56, type: 3}
+  - deviceName: Playstation
+    icons:
+    - bindingId: buttonNorth
+      icon: {fileID: 21300000, guid: 5e1a229572867b34f93741261116f8e9, type: 3}
+    - bindingId: buttonSouth
+      icon: {fileID: 21300000, guid: 9c5937142ff48cd49bd6aa311aaba6de, type: 3}
+    - bindingId: buttonEast
+      icon: {fileID: 21300000, guid: ff2b934c9ba1c8f4081f10aaaff6a96b, type: 3}
+    - bindingId: buttonWest
+      icon: {fileID: 21300000, guid: 9e5b9a38135bd0248b2c384a15651a1b, type: 3}
+    - bindingId: rightStick
+      icon: {fileID: 21300000, guid: 468263f83bb7cb844ab483dc46f52f38, type: 3}
+    - bindingId: leftStick
+      icon: {fileID: 21300000, guid: c34d5490b61997d4eb06ce736793c356, type: 3}
+    - bindingId: rightShoulder
+      icon: {fileID: 21300000, guid: 8f7afbdf8718e86408b8a968f792b2bb, type: 3}
+    - bindingId: leftShoulder
+      icon: {fileID: 21300000, guid: 2194786e1f2cdd346aed37686b7f8ae1, type: 3}
+    - bindingId: rightTrigger
+      icon: {fileID: 21300000, guid: a629787f5b8eca6409711785361e44a6, type: 3}
+    - bindingId: leftTrigger
+      icon: {fileID: 21300000, guid: 9a45e04f299ffd441bea12d1e79c1b8a, type: 3}
+    - bindingId: start
+      icon: {fileID: 21300000, guid: 06995ecf1a9ddea44915cb0b43fee0ed, type: 3}
+    - bindingId: back
+      icon: {fileID: 21300000, guid: 941070de38c9a2b42896f0433e1eafca, type: 3}
+    - bindingId: dpad/up
+      icon: {fileID: 21300000, guid: 48de7c808a172444c9a83f7c9c106c6b, type: 3}
+    - bindingId: dpad/down
+      icon: {fileID: 21300000, guid: f82b281fc876a7e499771aec142a5d1d, type: 3}
+    - bindingId: dpad/right
+      icon: {fileID: 21300000, guid: a870802e63906c44ca15f7bc4be2cf97, type: 3}
+    - bindingId: dpad/left
+      icon: {fileID: 21300000, guid: 5be1e9771360ca745a301f5c72d0afbf, type: 3}
+    - bindingId: leftStickPress
+      icon: {fileID: 21300000, guid: ec4a74c0597d871438337d1dce6da1dc, type: 3}
+    - bindingId: rightStickPress
+      icon: {fileID: 21300000, guid: 63c9747547f3d3b4bae25e292ac07ba3, type: 3}
+  - deviceName: Switch
+    icons:
+    - bindingId: buttonNorth
+      icon: {fileID: 21300000, guid: 871a75766472f714b87db51029e997d7, type: 3}
+    - bindingId: buttonSouth
+      icon: {fileID: 21300000, guid: 6676503ce31c0c14ba67fa4d60f82dd5, type: 3}
+    - bindingId: buttonEast
+      icon: {fileID: 21300000, guid: d7af91007f76ee94cbcf6efec993358a, type: 3}
+    - bindingId: buttonWest
+      icon: {fileID: 21300000, guid: 35c78185b1a208944a610e4988df1a20, type: 3}
+    - bindingId: rightStick
+      icon: {fileID: 21300000, guid: 14cef4595395b964f9eb9e09d0b5fb16, type: 3}
+    - bindingId: leftStick
+      icon: {fileID: 21300000, guid: ff943849283ce714cb107bb84cb5079a, type: 3}
+    - bindingId: rightShoulder
+      icon: {fileID: 21300000, guid: 1f47794a9472d6c418d771da5ef4fb1b, type: 3}
+    - bindingId: leftShoulder
+      icon: {fileID: 21300000, guid: 9086c6b65d8b78a4480c114a3af93cd0, type: 3}
+    - bindingId: leftTrigger
+      icon: {fileID: 21300000, guid: 68ce49979ff82ef46acd05e068f0fa1a, type: 3}
+    - bindingId: rightTrigger
+      icon: {fileID: 21300000, guid: 0581f827a4c47d844b118245a01cf2bd, type: 3}
+    - bindingId: start
+      icon: {fileID: 21300000, guid: 0ac78a998ede10e4893ea0d38cec8836, type: 3}
+    - bindingId: back
+      icon: {fileID: 21300000, guid: 0ac78a998ede10e4893ea0d38cec8836, type: 3}
+    - bindingId: dpad/up
+      icon: {fileID: 21300000, guid: 5866f67e870002a41a44aacbc1fd6946, type: 3}
+    - bindingId: dpad/down
+      icon: {fileID: 21300000, guid: 3b41007a1b4b3084dbdb019828f0c1ba, type: 3}
+    - bindingId: dpad/right
+      icon: {fileID: 21300000, guid: afe8d7019464e3446b449e49648b7222, type: 3}
+    - bindingId: dpad/left
+      icon: {fileID: 21300000, guid: 1a62329a69e67d445afb660141dbe0cc, type: 3}
+    - bindingId: leftStickPress
+      icon: {fileID: 21300000, guid: 4a02025debee9f7468ba675620502db6, type: 3}
+    - bindingId: rightStickPress
+      icon: {fileID: 21300000, guid: 7fe159fdb20e90f40a2bb8cfbed8ce56, type: 3}
