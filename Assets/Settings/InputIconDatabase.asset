@@ -73,11 +73,11 @@ MonoBehaviour:
       icon: {fileID: 21300000, guid: 2fbb0f49e7a58344bb65c3e4c2a59167, type: 3}
     - bindingId: capslock
       icon: {fileID: 21300000, guid: 0bd716b3bd7b27c469f538093823feee, type: 3}
-    - bindingId: shift
+    - bindingId: leftShift
       icon: {fileID: 21300000, guid: 3759e88d4be0d1e4194659b57457a416, type: 3}
     - bindingId: ctrl
       icon: {fileID: 21300000, guid: 0594a9bb05b2ec240ab9dd17238e3927, type: 3}
-    - bindingId: alt
+    - bindingId: leftAlt
       icon: {fileID: 21300000, guid: 9f5b25b9281d87b48a438746e17bbd16, type: 3}
     - bindingId: space
       icon: {fileID: 21300000, guid: fe8614926d84c1b44930c15cd29f95a1, type: 3}
@@ -175,6 +175,8 @@ MonoBehaviour:
       icon: {fileID: 21300000, guid: aca5769f90ceee2408e698eb293a25e1, type: 3}
     - bindingId: /
       icon: {fileID: 21300000, guid: d6cab45eb4fde8f4588cb92b2b7e2ec1, type: 3}
+    - bindingId: delta
+      icon: {fileID: 21300000, guid: c9cedc4aed3e1a34896e93318eb78cd0, type: 3}
   - deviceName: Xbox
     icons:
     - bindingId: buttonNorth
@@ -254,38 +256,38 @@ MonoBehaviour:
   - deviceName: Switch
     icons:
     - bindingId: buttonNorth
-      icon: {fileID: 21300000, guid: 871a75766472f714b87db51029e997d7, type: 3}
+      icon: {fileID: 21300000, guid: 17de05c4ed69e644ebcdc17eb953896d, type: 3}
     - bindingId: buttonSouth
-      icon: {fileID: 21300000, guid: 6676503ce31c0c14ba67fa4d60f82dd5, type: 3}
+      icon: {fileID: 21300000, guid: dadaa43017a78a34a864411d52c06487, type: 3}
     - bindingId: buttonEast
-      icon: {fileID: 21300000, guid: d7af91007f76ee94cbcf6efec993358a, type: 3}
+      icon: {fileID: 21300000, guid: 9deb30b7dcd3c294889506aa7495cd9e, type: 3}
     - bindingId: buttonWest
-      icon: {fileID: 21300000, guid: 35c78185b1a208944a610e4988df1a20, type: 3}
+      icon: {fileID: 21300000, guid: ba77e008bba520e478a91e9fbde917db, type: 3}
     - bindingId: rightStick
-      icon: {fileID: 21300000, guid: 14cef4595395b964f9eb9e09d0b5fb16, type: 3}
+      icon: {fileID: 21300000, guid: ccc340e5cc81ad4479655b12da590e59, type: 3}
     - bindingId: leftStick
-      icon: {fileID: 21300000, guid: ff943849283ce714cb107bb84cb5079a, type: 3}
+      icon: {fileID: 21300000, guid: 21f012d65e59c5b40874581b98c48055, type: 3}
     - bindingId: rightShoulder
-      icon: {fileID: 21300000, guid: 1f47794a9472d6c418d771da5ef4fb1b, type: 3}
+      icon: {fileID: 21300000, guid: c83687484e9103941b44141550c89068, type: 3}
     - bindingId: leftShoulder
-      icon: {fileID: 21300000, guid: 9086c6b65d8b78a4480c114a3af93cd0, type: 3}
+      icon: {fileID: 21300000, guid: 1d85438ac9d0d3548a5b950f2e714668, type: 3}
     - bindingId: leftTrigger
-      icon: {fileID: 21300000, guid: 68ce49979ff82ef46acd05e068f0fa1a, type: 3}
+      icon: {fileID: 21300000, guid: 6372dc1816ec5ad4989ff09cb1067c90, type: 3}
     - bindingId: rightTrigger
-      icon: {fileID: 21300000, guid: 0581f827a4c47d844b118245a01cf2bd, type: 3}
+      icon: {fileID: 21300000, guid: b51e4ede32b1f5f4cae238505dcf9db6, type: 3}
     - bindingId: start
-      icon: {fileID: 21300000, guid: 0ac78a998ede10e4893ea0d38cec8836, type: 3}
+      icon: {fileID: 21300000, guid: 04cf2dd309399694d81b3a8d137cd73a, type: 3}
     - bindingId: back
-      icon: {fileID: 21300000, guid: 0ac78a998ede10e4893ea0d38cec8836, type: 3}
+      icon: {fileID: 21300000, guid: 50c360dca80b762468ee3d7f709331c0, type: 3}
     - bindingId: dpad/up
-      icon: {fileID: 21300000, guid: 5866f67e870002a41a44aacbc1fd6946, type: 3}
+      icon: {fileID: 21300000, guid: d09e83eab782e1b44aa1f3afb177f9fa, type: 3}
     - bindingId: dpad/down
-      icon: {fileID: 21300000, guid: 3b41007a1b4b3084dbdb019828f0c1ba, type: 3}
+      icon: {fileID: 21300000, guid: 76f1740039297e24a8f209573b07f1de, type: 3}
     - bindingId: dpad/right
-      icon: {fileID: 21300000, guid: afe8d7019464e3446b449e49648b7222, type: 3}
+      icon: {fileID: 21300000, guid: 726ab2eb2237a7b47aef1eb7be96bab0, type: 3}
     - bindingId: dpad/left
-      icon: {fileID: 21300000, guid: 1a62329a69e67d445afb660141dbe0cc, type: 3}
+      icon: {fileID: 21300000, guid: 9635ef3c0afeb764e893ca6c86e578b3, type: 3}
     - bindingId: leftStickPress
-      icon: {fileID: 21300000, guid: 4a02025debee9f7468ba675620502db6, type: 3}
+      icon: {fileID: 21300000, guid: 26828c2ba1e42a947bcfb8710066f52b, type: 3}
     - bindingId: rightStickPress
-      icon: {fileID: 21300000, guid: 7fe159fdb20e90f40a2bb8cfbed8ce56, type: 3}
+      icon: {fileID: 21300000, guid: 8d9bf6cabd4c4f346bf8a18c9ca6b6e4, type: 3}

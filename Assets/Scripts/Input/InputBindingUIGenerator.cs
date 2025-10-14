@@ -9,7 +9,7 @@ namespace Input
     public class InputBindingUIGenerator : MonoBehaviour
     {
         [SerializeField] private PlayerInput playerInput;
-        [SerializeField] private GameObject actionRowPrefab;
+        [SerializeField] private RebindActionUI actionRowPrefab;
         [SerializeField] private Transform container;
         [SerializeField] private List<string> actionMapsToExclude = new List<string> { "UI" };
 
@@ -37,11 +37,7 @@ namespace Input
 
                 foreach (InputAction action in map.actions)
                 {
-                    GameObject rowObj = Instantiate(actionRowPrefab, container);
-                    var rebindUI = rowObj.GetComponent<RebindActionUI>();
-                
-                    // *** THE CHANGE IS HERE ***
-                    // Pass both the action AND the playerInput reference
+                    var rebindUI = Instantiate(actionRowPrefab, container);
                     rebindUI.Initialize(action, playerInput);
                 }
             }
