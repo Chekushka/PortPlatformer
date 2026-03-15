@@ -2,6 +2,7 @@ using Input;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class RebindActionUI : MonoBehaviour
@@ -93,6 +94,7 @@ public class RebindActionUI : MonoBehaviour
     {
         rebindButton.interactable = false;
         m_ActionToRebind.Disable();
+        GameObject buttonToReselect = gameObject;
 
         m_RebindingOperation = m_ActionToRebind.PerformInteractiveRebinding()
             .WithControlsExcluding("Mouse")
@@ -103,6 +105,7 @@ public class RebindActionUI : MonoBehaviour
                 rebindButton.interactable = true;
                 SaveBindingOverrides();
                 InputSystemEvents.InvokeBindingsChanged();
+                EventSystem.current.SetSelectedGameObject(buttonToReselect);
             })
             .Start();
     }

@@ -9,6 +9,7 @@ namespace Player
         public Vector2 MoveInput { get; private set; }
         public bool IsSprinting { get; private set; }
         public bool JumpPressed { get; private set; }
+        public bool SitPressed { get; private set; }
 
         // Private reference to the Player Input component
         private PlayerInput playerInput;
@@ -27,6 +28,8 @@ namespace Player
             playerInput.actions["Jump"].performed += ctx => JumpPressed = true;
             playerInput.actions["Sprint"].performed += ctx => IsSprinting = true;
             playerInput.actions["Sprint"].canceled += ctx => IsSprinting = false;
+            playerInput.actions["Sit"].performed += ctx => SitPressed = true;
+            playerInput.actions["Sit"].canceled += ctx => SitPressed = false;
         }
     
         // This is the new method to call from PlayerController after a jump
@@ -34,6 +37,13 @@ namespace Player
         {
             JumpPressed = false;
         }
+
+        // This method resets the sit input
+        public void ResetSitInput()
+        {
+            SitPressed = false;
+        }
+        
         private void OnDestroy()
         {
             // Unsubscribe to prevent memory leaks when the object is destroyed
@@ -44,6 +54,8 @@ namespace Player
                 playerInput.actions["Jump"].performed -= OnJumpPerformed;
                 playerInput.actions["Sprint"].performed -= OnSprintPerformed;
                 playerInput.actions["Sprint"].canceled -= OnSprintCanceled;
+                playerInput.actions["Sit"].performed -= OnSitPerformed;
+                playerInput.actions["Sit"].canceled -= OnSitCanceled;
             }
         }
 
@@ -72,6 +84,16 @@ namespace Player
         private void OnSprintCanceled(InputAction.CallbackContext context)
         {
             IsSprinting = false;
+        }
+
+        private void OnSitPerformed(InputAction.CallbackContext context)
+        {
+            SitPressed = true;
+        }
+
+        private void OnSitCanceled(InputAction.CallbackContext context)
+        {
+            SitPressed = false;
         }
     }
 }

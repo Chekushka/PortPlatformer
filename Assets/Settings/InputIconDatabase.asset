@@ -291,3 +291,12 @@ MonoBehaviour:
       icon: {fileID: 21300000, guid: 26828c2ba1e42a947bcfb8710066f52b, type: 3}
     - bindingId: rightStickPress
       icon: {fileID: 21300000, guid: 8d9bf6cabd4c4f346bf8a18c9ca6b6e4, type: 3}
+  deviceDisplays:
+  - deviceName: Keyboard
+    deviceSprite: {fileID: 21300000, guid: f7f8d9f8f79b51948ab568d40b82e5c7, type: 3}
+  - deviceName: Xbox
+    deviceSprite: {fileID: 21300000, guid: 1748f15b000861a459987a2633f9437f, type: 3}
+  - deviceName: Playstation
+    deviceSprite: {fileID: 21300000, guid: 43dcf87d1070b444ab59b75ebb538eaa, type: 3}
+  - deviceName: Switch
+    deviceSprite: {fileID: 21300000, guid: e80d643ff73fa164d816509e5bb1610f, type: 3}

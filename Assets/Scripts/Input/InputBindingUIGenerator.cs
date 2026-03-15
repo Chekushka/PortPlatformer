@@ -1,5 +1,3 @@
-// Attach this script to your ScrollView's Content object or a manager object
-
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -19,13 +17,15 @@ namespace Input
             PopulateUI();
         }
 
-        private void PopulateUI()
+        public GameObject PopulateUI()
         {
             foreach (Transform child in container)
             {
                 Destroy(child.gameObject);
             }
-
+            
+            GameObject firstRowObject = null;
+            
             InputActionAsset inputActionAsset = playerInput.actions;
 
             foreach (InputActionMap map in inputActionAsset.actionMaps)
@@ -37,10 +37,18 @@ namespace Input
 
                 foreach (InputAction action in map.actions)
                 {
-                    var rebindUI = Instantiate(actionRowPrefab, container);
+                    var rowObj = Instantiate(actionRowPrefab, container);
+                    var rebindUI = rowObj.GetComponent<RebindActionUI>();
                     rebindUI.Initialize(action, playerInput);
+                    
+                    if (firstRowObject == null)
+                    {
+                        firstRowObject = rowObj.gameObject;
+                    }
                 }
             }
+            
+            return firstRowObject;
         }
     
         private void LoadBindingOverrides()

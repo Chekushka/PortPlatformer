@@ -50,6 +50,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Sit",
+                    "type": "Button",
+                    "id": "e7a69b3b-f13d-484e-a9a0-a3f4c6591c82",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -204,6 +213,28 @@
                     "processors": "",
                     "groups": ";Xbox;Playstation;Switch",
                     "action": "EnablePause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c03625b5-44cc-45bb-b1b0-1e0724e1a0d3",
+                    "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard",
+                    "action": "Sit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5c1c565f-b1ab-4789-b7af-225bba1306ec",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Xbox;Playstation;Switch",
+                    "action": "Sit",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

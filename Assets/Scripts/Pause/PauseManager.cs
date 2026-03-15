@@ -5,9 +5,8 @@ using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
-
-// Using new Input System
 
 namespace Pause
 {
@@ -15,6 +14,9 @@ namespace Pause
     {
         [SerializeField] private GameObject pauseMenuUI;
         [SerializeField] private PlayerInput playerInput;
+        [FormerlySerializedAs("backAction")]
+        [Tooltip("An action in Player Input that stands for UI/Cancel.")]
+        [SerializeField] private InputActionReference cancelAction;
         [SerializeField] private GameObject firstSelectedButton;
 
         [Header("Blur")]
@@ -28,7 +30,6 @@ namespace Pause
 
         private void Start()
         {
-            // Ensure the pause menu is hidden at the start
             if (pauseMenuUI != null)
             {
                 pauseMenuUI.SetActive(false);
@@ -41,9 +42,9 @@ namespace Pause
 
             playerInput.actions["EnablePause"].performed += SubscribeToggle;
             playerInput.actions["Pause"].performed += SubscribeToggle;
+            cancelAction.action.performed += SubscribeCancelAction;
         }
-
-        // A method for pausable objects to register themselves
+        
         public void Register(IPausable pausable)
         {
             if (!m_PausableObjects.Contains(pausable))
@@ -51,8 +52,7 @@ namespace Pause
                 m_PausableObjects.Add(pausable);
             }
         }
-
-        // A method for pausable objects to unregister themselves
+        
         public void Unregister(IPausable pausable)
         {
             if (m_PausableObjects.Contains(pausable))
@@ -78,6 +78,17 @@ namespace Pause
             TogglePause();
         }
 
+        private void SubscribeCancelAction(InputAction.CallbackContext ctx)
+        {
+            Debug.Log("Pause event");
+            Debug.Log(Settings.IsOpened);
+            if (m_IsPaused && !Settings.IsOpened)
+            {
+                PerformResume();
+                m_IsPaused = false;
+            }
+        }
+
         public void TogglePause()
         {
             m_IsPaused = !m_IsPaused;
@@ -93,16 +104,13 @@ namespace Pause
     
         private void PerformPause()
         {
-            // This is the hybrid approach: stop physics and standard animations
             Time.timeScale = 0f;
-
-            // Manually pause all registered objects
+            
             foreach (IPausable pausable in m_PausableObjects)
             {
                 pausable.Pause();
             }
-
-            // Show the pause menu
+            
             if (pauseMenuUI != null)
             {
                 EnableBlur();
@@ -110,13 +118,10 @@ namespace Pause
                 pauseMenuUI.SetActive(true);
                 pauseMenuUI.transform.DOScale(Vector3.one, 0.5f).SetEase(Ease.OutCubic);
             }
-        
-            // Clear previous selection to avoid issues
+            
             EventSystem.current.SetSelectedGameObject(null); 
-            // Set the new selection
             EventSystem.current.SetSelectedGameObject(firstSelectedButton);
-
-            // Switch Action Maps to a "UI" map
+            
             if (playerInput != null)
             {
                 m_OriginalActionMap = playerInput.currentActionMap.name;
@@ -141,11 +146,9 @@ namespace Pause
                     pauseMenuUI.SetActive(false);
                 });
             }
-        
-            // Important: Clear selection when closing the menu
+            
             EventSystem.current.SetSelectedGameObject(null);
-
-            // Switch back to the original Action Map
+            
             if (playerInput != null)
             {
                 playerInput.SwitchCurrentActionMap(m_OriginalActionMap);
@@ -158,6 +161,7 @@ namespace Pause
             {
                 playerInput.actions["EnablePause"].performed -= SubscribeToggle;
                 playerInput.actions["Pause"].performed -= SubscribeToggle;
+                cancelAction.action.performed -= SubscribeCancelAction;
             }
         }
     }

@@ -2,6 +2,7 @@
 
 using System.Collections.Generic;
 using DG.Tweening;
+using Input;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -15,6 +16,8 @@ namespace Tabs
         {
             public TabButton tabButton;
             public GameObject menuPanel;
+            public GameObject firstSelectedButton;
+            public InputBindingUIGenerator runtimeButtonGenerator;
         }
 
         [Tooltip("The list of tabs and their corresponding menu panels.")]
@@ -77,13 +80,24 @@ namespace Tabs
 
             for (int i = 0; i < tabbedMenus.Count; i++)
             {
+                TabbedMenu currentMenu = tabbedMenus[i];
                 bool isSelected = (i == m_CurrentTabIndex);
-            
-                if (tabbedMenus[i].menuPanel != null)
-                    tabbedMenus[i].menuPanel.SetActive(isSelected);
+
+                if (currentMenu.menuPanel != null)
+                    currentMenu.menuPanel.SetActive(isSelected);
 
                 if (isSelected)
+                {
                     tabbedMenus[i].tabButton.Select();
+                    GameObject buttonToSelect = currentMenu.firstSelectedButton;
+                    if (currentMenu.runtimeButtonGenerator != null)
+                    {
+                        buttonToSelect = currentMenu.runtimeButtonGenerator.PopulateUI();
+                    }
+                    
+                    UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
+                    UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(buttonToSelect);
+                }
                 else
                     tabbedMenus[i].tabButton.Deselect();
             }
