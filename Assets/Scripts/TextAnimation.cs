@@ -10,9 +10,12 @@ public class TextAnimation : MonoBehaviour
 
     [Header("Settings")] [SerializeField] private bool playOnStart = true;
     [SerializeField] private float animationDuration = 1f;
-    [SerializeField] private AnimationCurve animationCurve;
-    [SerializeField] private float heightMultiplier = 10f; // Множник висоти
     [SerializeField] private bool isLooping = true;
+    [SerializeField] private AnimationCurve animationCurve;
+    [Header("Wave Animation Settings")]
+    [SerializeField] private float heightMultiplier = 10f;
+    [Header("Scale Animation Settings")]
+    [SerializeField] private float scaleMultiplier = 1.5f;
 
     private TMP_Text _textComponent;
     private Coroutine _animCoroutine;
@@ -35,8 +38,8 @@ public class TextAnimation : MonoBehaviour
             case AnimationType.Typing:
                 _animCoroutine = StartCoroutine(TypingAnimCoroutine(textToType));
                 break;
-            case AnimationType.Vertices:
-               
+            case AnimationType.Scale:
+                _animCoroutine = StartCoroutine(ScaleAnimCoroutine(textToType));
                 break;
             default:
                 break;
@@ -46,27 +49,72 @@ public class TextAnimation : MonoBehaviour
     private IEnumerator TypingAnimCoroutine(string textToType)
     {
         _textComponent.text = textToType;
-        _textComponent.maxVisibleCharacters = 0;
 
-        _textComponent.ForceMeshUpdate();
-
-        int visibleCharacters = textToType.Length;
-        int counter = 0;
-
-        while (counter <= visibleCharacters)
+        while (isLooping)
         {
-            _textComponent.maxVisibleCharacters += 1;
-            counter++;
-            yield return new WaitForSeconds(animationDuration / visibleCharacters);
-        }
+            _textComponent.maxVisibleCharacters = 0;
+            _textComponent.ForceMeshUpdate();
 
+            int visibleCharacters = textToType.Length;
+            int counter = 0;
+            
+            while (counter <= visibleCharacters)
+            {
+                _textComponent.maxVisibleCharacters += 1;
+                counter++;
+                yield return new WaitForSeconds(animationDuration / visibleCharacters);
+            }
+        }
+        
         _animCoroutine = null;
     }
     
-    private IEnumerator VerticesAnimCoroutine(string textToType)
+    private IEnumerator ScaleAnimCoroutine(string textToType)
     {
-       
-        yield break; 
+        _textComponent.text = textToType;
+        _textComponent.ForceMeshUpdate();
+        
+        TMP_TextInfo textInfo = _textComponent.textInfo;
+        Vector3[][] originalVertices = new Vector3[textInfo.meshInfo.Length][];
+        for (int i = 0; i < textInfo.meshInfo.Length; i++)
+            originalVertices[i] = (Vector3[])textInfo.meshInfo[i].vertices.Clone();
+        
+        float elapsedTime = 0f;
+
+        while (isLooping || elapsedTime <  animationDuration)
+        {
+            for (int i = 0; i < textInfo.characterCount; i++)
+            {
+                var character = textInfo.characterInfo[i];
+                if(!character.isVisible) continue;
+                
+                var matIndex = character.materialReferenceIndex;
+                var vIndex = character.vertexIndex;
+                
+                Vector3[] sourceVertices = originalVertices[matIndex];
+                Vector3[] destVertices = textInfo.meshInfo[matIndex].vertices;
+                
+                float normalizedTime = isLooping ? Mathf.Repeat(elapsedTime / animationDuration, 1f) : 
+                    Mathf.Clamp01(elapsedTime / animationDuration);
+                
+                float curveValue =  animationCurve.Evaluate(normalizedTime);
+                float offset = curveValue * scaleMultiplier;
+                
+                Vector3 charCenter = (sourceVertices[vIndex] + sourceVertices[vIndex + 2]) / 2f;
+
+                for (int j = 0; j < 4; j++)
+                {
+                    Vector3 direction = sourceVertices[vIndex + j] - charCenter;
+                    destVertices[vIndex - j] = charCenter + direction * (1 + offset);
+                }
+            }
+            
+            _textComponent.UpdateVertexData(TMP_VertexDataUpdateFlags.Vertices);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        
+        _animCoroutine = null;
     }
 
     private IEnumerator WaveAnimCoroutine(string textToType)
@@ -145,7 +193,7 @@ public class TextAnimation : MonoBehaviour
 public enum AnimationType
 {
     None,
-    Vertices,
+    Scale,
     Typing,
     Wave
 }

@@ -48038,6 +48038,7 @@ MonoBehaviour:
   animationType: 2
   playOnStart: 0
   animationDuration: 1
+  isLooping: 1
   animationCurve:
     serializedVersion: 2
     m_Curve:
@@ -48072,7 +48073,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   heightMultiplier: 10
-  isLooping: 1
+  scaleMultiplier: 1.2
 --- !u!4 &717232991 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 944231491293657378, guid: 1143e9a6e0fab4c4696b4e9e63a8d7b6, type: 3}
@@ -149375,15 +149376,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 274179315334368029, guid: e6c3695cc1d23464aadb5bb008e030ab, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.1710468
+      value: 0.17104681
       objectReference: {fileID: 0}
     - target: {fileID: 274179315334368029, guid: e6c3695cc1d23464aadb5bb008e030ab, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000019363524
+      value: 0.00000002002442
       objectReference: {fileID: 0}
     - target: {fileID: 274179315334368029, guid: e6c3695cc1d23464aadb5bb008e030ab, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000033616092
+      value: -0.0000000035607226
       objectReference: {fileID: 0}
     - target: {fileID: 274179315334368029, guid: e6c3695cc1d23464aadb5bb008e030ab, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
